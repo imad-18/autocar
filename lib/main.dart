@@ -1,4 +1,5 @@
 import 'package:autocar/screens/notification/notification_screen.dart';
+import 'package:autocar/screens/statistics/statistic_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/start/index.dart';
@@ -21,11 +22,12 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      initialRoute: '/notification',
+      initialRoute: '/index',
       routes: {
         '/index': (context) => const index(),
         '/home': (context) => const HomeScreen(),
         '/notification': (context) => const NotificationScreen(),
+        '/statistic': (context) => const StatisticScreen(),
       },
     );
   }

@@ -21,7 +21,7 @@ class index extends StatelessWidget {
               ),
               SizedBox(height: 100),
               InkWell(
-                onTap: () => {Navigator.pushNamed(context, '/home')},
+                onTap: () => {},
                 child: TextButton(
                   style: TextButton.styleFrom(
                       foregroundColor: Colors.black,
@@ -32,13 +32,15 @@ class index extends StatelessWidget {
                       ),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8))),
-                  onPressed: () => {},
+                  onPressed: () => {
+                    Navigator.pushNamed(context, '/home'),
+                  },
                   child: Text(
                     'Start',
                     style: TextStyle(fontSize: 35),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

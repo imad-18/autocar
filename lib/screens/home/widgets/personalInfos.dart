@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'chart_bars.dart';
+
 class Personalinfos extends StatelessWidget {
   const Personalinfos({super.key});
 
@@ -18,13 +20,13 @@ class Personalinfos extends StatelessWidget {
           width: double.maxFinite,
           height: 300,
           decoration: BoxDecoration(
-            color: Colors.orange,
             border: Border.all(
               color: Color(0xFFFFD04E),
               width: 2,
             ),
             borderRadius: BorderRadius.circular(12),
           ),
+          child: ChartBars(),
         )
       ],
     );

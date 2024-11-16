@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class customizedBottomNavBar extends StatelessWidget {
   final MenuState selectedMenu;
-  const customizedBottomNavBar({
+   customizedBottomNavBar({
     super.key,
     required this.selectedMenu,
   });
@@ -11,12 +11,12 @@ class customizedBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const Color inActiveIconColor = Color.fromARGB(255, 239, 239, 239);
-
+    
     return Container(
       height: 80,
       padding: const EdgeInsets.symmetric(vertical: 8),
       decoration: const BoxDecoration(
-        color: Color(0xFFFFD04E),
+        color: Color(0xFF42445A),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(50),
           topRight: Radius.circular(50),
@@ -28,17 +28,21 @@ class customizedBottomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                onPressed: () => {Navigator.pushNamed(context, '/home')},
+                onPressed: () => {
+                      Navigator.pushNamed(context, '/home'),
+                       
+                },
                 icon: Icon(
                   Icons.directions_car_filled_outlined,
                   color: MenuState.home == selectedMenu
-                      ? Colors.orange
+                      ? const Color(0xFFFF9800)
                       : inActiveIconColor,
                   size: 45,
                 ),
               ),
               IconButton(
-                onPressed: () => {},
+                onPressed: () =>
+                    {Navigator.pushNamed(context, "/statistic")},
                 icon: Icon(
                   Icons.analytics,
                   color: MenuState.analytics == selectedMenu
@@ -57,11 +61,15 @@ class customizedBottomNavBar extends StatelessWidget {
                     size: 45,
                   )),
               IconButton(
-                  onPressed: () => {},
-                  icon: Icon(Icons.notifications_rounded,
-                  color: MenuState.notifications == selectedMenu
-                      ? Colors.orange
-                      : inActiveIconColor, size: 45,)),
+                  onPressed: () =>
+                      {Navigator.pushNamed(context, '/notification')},
+                  icon: Icon(
+                    Icons.notifications_rounded,
+                    color: MenuState.notifications == selectedMenu
+                        ? Colors.orange
+                        : inActiveIconColor,
+                    size: 45,
+                  )),
             ],
           )),
     );
