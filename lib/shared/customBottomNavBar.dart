@@ -48,7 +48,7 @@ class customizedBottomNavBar extends StatelessWidget {
                 ),
               ),
               IconButton(
-                  onPressed: () => {},
+                  onPressed: () => {Navigator.pushNamed(context, '/maps')},
                   icon: Icon(
                     Icons.assistant_direction_rounded,
                     color: MenuState.maps == selectedMenu

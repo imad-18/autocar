@@ -1,3 +1,4 @@
+import 'package:autocar/screens/maps/maps.dart';
 import 'package:autocar/screens/notification/notification_screen.dart';
 import 'package:autocar/screens/statistics/stats_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomeScreen(),
         '/notification': (context) => const NotificationScreen(),
         '/statistics': (context) => const Stats(),
+        '/maps': (context) => NavigationMap(),
       },
     );
   }
