@@ -4,20 +4,20 @@ import 'package:autocar/screens/home/widgets/notifSection.dart';
 import 'package:autocar/screens/home/widgets/personalInfos.dart';
 import 'package:flutter/material.dart';
 
-import 'widgets/customBottomNavBar.dart';
+import '../../shared/customBottomNavBar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Scaffold(
-        backgroundColor: Colors.black12,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
+    return const Scaffold(
+      backgroundColor: Colors.black12,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -30,9 +30,9 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: customizedBottomNavBar(
-          selectedMenu: MenuState.home,
-        ),
+      ),
+      bottomNavigationBar: customizedBottomNavBar(
+        selectedMenu: MenuState.home,
       ),
     );
   }

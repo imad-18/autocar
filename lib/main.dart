@@ -1,8 +1,8 @@
 import 'package:autocar/screens/notification/notification_screen.dart';
+import 'package:autocar/screens/statistics/stats_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/start/index.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -20,14 +20,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-
-      initialRoute: '/notification',
+      initialRoute: '/index',
       routes: {
         '/index': (context) => const index(),
         '/home': (context) => const HomeScreen(),
         '/notification': (context) => const NotificationScreen(),
+        '/statistics': (context) => const Stats(),
       },
     );
   }
 }
-

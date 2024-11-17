@@ -38,10 +38,10 @@ class customizedBottomNavBar extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () => {},
+                onPressed: () => {Navigator.pushNamed(context, '/statistics')},
                 icon: Icon(
                   Icons.analytics,
-                  color: MenuState.analytics == selectedMenu
+                  color: MenuState.statistics == selectedMenu
                       ? Colors.orange
                       : inActiveIconColor,
                   size: 45,
@@ -57,11 +57,15 @@ class customizedBottomNavBar extends StatelessWidget {
                     size: 45,
                   )),
               IconButton(
-                  onPressed: () => {},
-                  icon: Icon(Icons.notifications_rounded,
-                  color: MenuState.notifications == selectedMenu
-                      ? Colors.orange
-                      : inActiveIconColor, size: 45,)),
+                  onPressed: () =>
+                      {Navigator.pushNamed(context, '/notification')},
+                  icon: Icon(
+                    Icons.notifications_rounded,
+                    color: MenuState.notifications == selectedMenu
+                        ? Colors.orange
+                        : inActiveIconColor,
+                    size: 45,
+                  )),
             ],
           )),
     );

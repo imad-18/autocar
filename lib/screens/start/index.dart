@@ -32,7 +32,7 @@ class index extends StatelessWidget {
                       ),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8))),
-                  onPressed: () => {},
+                  onPressed: () => {Navigator.pushNamed(context, '/home')},
                   child: Text(
                     'Start',
                     style: TextStyle(fontSize: 35),
