@@ -5,7 +5,7 @@ import 'package:autocar/screens/home/widgets/personalInfos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import 'widgets/customBottomNavBar.dart';
+import '../../shared/customBottomNavBar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

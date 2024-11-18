@@ -1,7 +1,7 @@
 import 'package:autocar/screens/notification/widgets/notification.dart';
 import 'package:flutter/material.dart';
 import '../../enum/menu_state.dart';
-import '../home/widgets/customBottomNavBar.dart';
+import '../../shared/customBottomNavBar.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -25,7 +25,6 @@ class NotificationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black12,
       body: Stack(
-        
         children: [
           // Background Image
           Positioned.fill(
@@ -108,7 +107,6 @@ class NotificationScreen extends StatelessWidget {
               ),
             ),
           ),
-          
         ],
       ),
       bottomNavigationBar: customizedBottomNavBar(
