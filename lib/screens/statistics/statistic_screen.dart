@@ -3,7 +3,8 @@ import 'package:autocar/screens/statistics/widgets/square.dart';
 import 'package:flutter/material.dart';
 
 import '../../enum/menu_state.dart';
-import '../home/widgets/customBottomNavBar.dart';
+import '../../shared/customBottomNavBar.dart';
+
 
 class StatisticScreen extends StatelessWidget {
   const StatisticScreen({super.key});
@@ -113,7 +114,7 @@ class StatisticScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: customizedBottomNavBar(
-        selectedMenu: MenuState.analytics,
+        selectedMenu: MenuState.statistics,
       ),
     );
   }

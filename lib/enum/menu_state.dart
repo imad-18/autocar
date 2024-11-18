@@ -4,6 +4,7 @@ enum MenuState {
   home,
   maps,
   notifications,
+  statistics,
 }
 
 // IconData getIcon(MenuState state) {

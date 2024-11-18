@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomeScreen(),
         '/notification': (context) => const NotificationScreen(),
         '/statistics': (context) => const Stats(),
-        '/maps': (context) => NavigationMap(),
+        // '/maps': (context) => NavigationMap(),
       },
     );
   }
