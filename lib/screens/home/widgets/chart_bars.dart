@@ -18,7 +18,7 @@ class ChartBars extends StatelessWidget {
           ),
           textAlign: TextAlign.center, 
         ),
-        SizedBox(height: 0),
+        const SizedBox(height: 0),
         const Text(
           'Average time you spend per day',
           style: TextStyle(
@@ -71,7 +71,7 @@ class ChartBars extends StatelessWidget {
       );
 
   Widget getTitles(double value, TitleMeta meta) {
-    final style = TextStyle(
+    const style = TextStyle(
       color: Color(0xFFFFD04E),  //days
       fontWeight: FontWeight.bold,
       fontSize: 14,
@@ -134,7 +134,7 @@ class ChartBars extends StatelessWidget {
         show: false,
       );
 
-  LinearGradient get _barsGradient => LinearGradient(
+  LinearGradient get _barsGradient => const LinearGradient(
         colors: [
           Colors.orange,
           Color(0xFFFFD04E),
