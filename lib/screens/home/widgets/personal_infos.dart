@@ -19,7 +19,7 @@ class Personalinfos extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(vertical: 2),
           width: double.maxFinite,
-          height: 310,
+          height: 320,
           decoration: BoxDecoration(
             border: Border.all(
               color: const Color(0xFFFFD04E),

@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 class Rectangle extends StatelessWidget {
   final String title;
   final String value;
+  final String iconPath;
   const Rectangle({
     super.key,
     required this.title,
-    required this.value,
+    required this.value, required this.iconPath,
   });
 
   @override
@@ -29,8 +30,10 @@ class Rectangle extends StatelessWidget {
                   height: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: Colors.green,
+                    // color: Colors.green,
+                    
                   ),
+                  child: Image.asset(iconPath),
                 )
               ],
             ),

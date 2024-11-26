@@ -11,10 +11,10 @@ class StatisticScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, String>> general = [
-      {"title": "TEMPERATURE", "value": "25"},
-      {"title": "SPEED", "value": "60"},
-      {"title": "OVERALL STATE", "value": "GOOD"},
-      {"title": "PANELS POWER", "value": "1000W"}
+      {"title": "TEMPERATURE", "value": "25", "iconPath": "assets/icons/icon1.png"},
+      {"title": "SPEED", "value": "60", "iconPath": "assets/icons/icon2.png"},
+      {"title": "OVERALL STATE", "value": "GOOD", "iconPath": "assets/icons/icon3.png"},
+      {"title": "PANELS POWER", "value": "1000W", "iconPath": "assets/icons/icon4.png"}
     ];
 
     List<Map<String, String>> poweringSys = [
@@ -74,7 +74,8 @@ class StatisticScreen extends StatelessWidget {
                         general.length,
                         (index) => Rectangle(
                             title: general[index]['title']!,
-                            value: general[index]['value']!))
+                            value: general[index]['value']!, 
+                            iconPath: general[index]['iconPath']!,))
                   ],
                 ),
                 const SizedBox(height: 10),
