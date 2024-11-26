@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "756895440059",
+    "project_id": "phoenixev-3ff09",
+    "storage_bucket": "phoenixev-3ff09.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756895440059:android:5362d532ebc46b37e59d9e",
+        "android_client_info": {
+          "package_name": "com.example.autocar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyow8UK0YAf_vDtRNzo6cIf1egDtH4oqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
