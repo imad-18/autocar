@@ -20,8 +20,8 @@ class Square extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 5),
         child: Text(
-          '${title}',
-          style: TextStyle(
+          title,
+          style: const TextStyle(
             color: Colors.grey,
             fontSize: 24,
             fontWeight: FontWeight.w400

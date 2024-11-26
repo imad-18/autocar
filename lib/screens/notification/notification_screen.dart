@@ -1,7 +1,7 @@
 import 'package:autocar/screens/notification/widgets/notification.dart';
 import 'package:flutter/material.dart';
 import '../../enum/menu_state.dart';
-import '../../shared/customBottomNavBar.dart';
+import '../home/widgets/custom_bottom_navBar.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -25,6 +25,7 @@ class NotificationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black12,
       body: Stack(
+        
         children: [
           // Background Image
           Positioned.fill(
@@ -33,7 +34,7 @@ class NotificationScreen extends StatelessWidget {
               child: Image.asset(
                 'assets/images/e1.png',
                 fit: BoxFit.cover,
-                alignment: AlignmentDirectional(-1, 0),
+                alignment: const AlignmentDirectional(-1, 0),
                 // scale: 0.2,
               ),
             ),
@@ -52,13 +53,13 @@ class NotificationScreen extends StatelessWidget {
                         Container(
                           width: 60,
                           height: 60,
-                          child: const Icon(
-                            Icons.notifications_none_rounded,
-                            size: 36,
-                          ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
                             color: const Color(0xFFFFD04E),
+                          ),
+                          child: const Icon(
+                            Icons.notifications_none_rounded,
+                            size: 36,
                           ),
                         ),
                         const SizedBox(width: 12),
@@ -107,9 +108,10 @@ class NotificationScreen extends StatelessWidget {
               ),
             ),
           ),
+          
         ],
       ),
-      bottomNavigationBar: customizedBottomNavBar(
+      bottomNavigationBar: const CustomizedBottomNavBar(
         selectedMenu: MenuState.notifications,
       ),
     );

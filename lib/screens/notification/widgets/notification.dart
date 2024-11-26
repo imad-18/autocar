@@ -31,7 +31,7 @@ class NotificationWidget extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 26, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 30),
           // side: BorderSide(
           //   color: const Color.fromARGB(255, 255, 111, 0),
           //   width: 1.2,
@@ -39,25 +39,25 @@ class NotificationWidget extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(
+            const Icon(
               Icons.notifications_rounded,
               color: Color(0xFFFFD04E),
               size: 50,
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
                   description,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ],
             ),

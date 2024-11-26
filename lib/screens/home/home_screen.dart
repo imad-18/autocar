@@ -1,11 +1,10 @@
 import 'package:autocar/enum/menu_state.dart';
-import 'package:autocar/screens/home/widgets/helloUser.dart';
-import 'package:autocar/screens/home/widgets/notifSection.dart';
-import 'package:autocar/screens/home/widgets/personalInfos.dart';
+import 'package:autocar/screens/home/widgets/hello_user.dart';
+import 'package:autocar/screens/home/widgets/notif_section.dart';
+import 'package:autocar/screens/home/widgets/personal_infos.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
-import '../../shared/customBottomNavBar.dart';
+import 'widgets/custom_bottom_navBar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -51,7 +50,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: customizedBottomNavBar(
+      bottomNavigationBar: const CustomizedBottomNavBar(
         selectedMenu: MenuState.home,
       ),
     );

@@ -3,69 +3,82 @@ import 'package:autocar/screens/statistics/widgets/square.dart';
 import 'package:flutter/material.dart';
 
 import '../../enum/menu_state.dart';
-import '../../shared/customBottomNavBar.dart';
-
+import '../home/widgets/custom_bottom_navBar.dart';
 
 class StatisticScreen extends StatelessWidget {
   const StatisticScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    List<Map<String, String>> general = [
+      {"title": "TEMPERATURE", "value": "25"},
+      {"title": "SPEED", "value": "60"},
+      {"title": "OVERALL STATE", "value": "GOOD"},
+      {"title": "PANELS POWER", "value": "1000W"}
+    ];
+
+    List<Map<String, String>> poweringSys = [
+      {"title": "PANELS"},
+      {"title": "INDUCTION"},
+    ];
+
+    List<Map<String, String>> batteries = [
+      {"title": "FIRST"},
+      {"title": "SECONDD"},
+    ];
+    return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Column(
               children: [
-                SizedBox(height: 0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                const SizedBox(height: 0),
+                const Center(
+                  child: Text(
+                    "Car State",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    "General",
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                      
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                GridView.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  padding: EdgeInsets.zero,
+                  childAspectRatio: 1.7,
+                  shrinkWrap: true, // Adds bounded height
+                  physics:
+                      const NeverScrollableScrollPhysics(), // Disable scrolling in GridView
                   children: [
-                    Text(
-                      "Car State",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
-                    )
+                    ...List.generate(
+                        general.length,
+                        (index) => Rectangle(
+                            title: general[index]['title']!,
+                            value: general[index]['value']!))
                   ],
                 ),
-                SizedBox(height: 12),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      "General",
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Rectangle(title: "TEMPERATURE", value: "25",),
-                    Rectangle(title: "SPEED", value: "60",),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Rectangle(title: "OVERALL STATE", value: "GOOD",),
-                    Rectangle(title: "PANELS POWER", value: "1000W",),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Row(
+                const SizedBox(height: 10),
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
@@ -78,16 +91,22 @@ class StatisticScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                GridView.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  shrinkWrap: true,
+                  childAspectRatio: 1.15,
+                  physics: const NeverScrollableScrollPhysics(),
                   children: [
-                    Square(title: "PANELS"),
-                    Square(title: "INDUCTION"),
+                    ...List.generate(
+                      poweringSys.length,
+                      (index) => Square(title: poweringSys[index]['title']!),
+                    ),
                   ],
                 ),
-                SizedBox(height: 10),
-                Row(
+                const SizedBox(height: 10),
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
@@ -100,12 +119,18 @@ class StatisticScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(height: 0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                GridView.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  shrinkWrap: true,
+                  childAspectRatio: 1.15,
+                  physics: const NeverScrollableScrollPhysics(),
                   children: [
-                    Square(title: "FIRST"),
-                    Square(title: "SECOND"),
+                    ...List.generate(
+                      batteries.length,
+                      (index) => Square(title: batteries[index]['title']!),
+                    ),
                   ],
                 ),
               ],
@@ -113,8 +138,8 @@ class StatisticScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: customizedBottomNavBar(
-        selectedMenu: MenuState.statistics,
+      bottomNavigationBar: const CustomizedBottomNavBar(
+        selectedMenu: MenuState.analytics,
       ),
     );
   }

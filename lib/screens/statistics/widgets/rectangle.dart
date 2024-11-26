@@ -39,7 +39,7 @@ class Rectangle extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${title}',
+                  title,
                   style: const TextStyle(
                       color: Colors.grey,
                       fontSize: 12,
@@ -48,7 +48,7 @@ class Rectangle extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  '${value}',
+                  value,
                   style: const TextStyle(
                       color: Color(0xFFFFD04E),
                       fontSize: 20,

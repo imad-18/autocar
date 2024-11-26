@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class index extends StatelessWidget {
-  const index({super.key});
+class Index extends StatelessWidget {
+  const Index({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,31 +9,33 @@ class index extends StatelessWidget {
       backgroundColor: Colors.black12,
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
-              SizedBox(height: 10),
-              Container(
+              const SizedBox(height: 10),
+              SizedBox(
                 // color: Colors.blue,
                 width: 500,
                 height: 500,
                 child: Image.asset('assets/images/phoenix_ev_full.png'),
               ),
-              SizedBox(height: 100),
+              const SizedBox(height: 100),
               InkWell(
                 onTap: () => {},
                 child: TextButton(
                   style: TextButton.styleFrom(
                       foregroundColor: Colors.black,
-                      backgroundColor: Color(0xFFFFD04E),
-                      padding: EdgeInsets.symmetric(
+                      backgroundColor: const Color(0xFFFFD04E),
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 90,
                         vertical: 8,
                       ),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8))),
-                  onPressed: () => {Navigator.pushNamed(context, '/home')},
-                  child: Text(
+                  onPressed: () => {
+                    Navigator.pushNamed(context, '/home'),
+                  },
+                  child: const Text(
                     'Start',
                     style: TextStyle(fontSize: 35),
                   ),
