@@ -23,9 +23,9 @@ class NotificationScreen extends StatelessWidget {
     //   },
     // ];
     return Scaffold(
+      extendBody: true,
       backgroundColor: Colors.black12,
       body: Stack(
-        
         children: [
           // Background Image
           Positioned.fill(
@@ -108,7 +108,6 @@ class NotificationScreen extends StatelessWidget {
               ),
             ),
           ),
-          
         ],
       ),
       bottomNavigationBar: const CustomizedBottomNavBar(
