@@ -1,14 +1,70 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ChartBars extends StatelessWidget {
+class ChartBars extends StatefulWidget {
   const ChartBars({super.key});
 
   @override
+  State<ChartBars> createState() => _ChartBarsState();
+}
+
+class _ChartBarsState extends State<ChartBars> {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  List<Map<String, dynamic>> _chartData = []; // To hold fetched Firestore data
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchChartData();
+  }
+
+  void fetchChartData() async {
+    try {
+      QuerySnapshot snapshot =
+          await _firestore.collection('barChartData').get();
+      setState(() {
+        // Predefine the desired order of days,
+        // cuz data is not ordered in Firebase
+        List<String> daysOrder = [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+          'Sunday'
+        ];
+        // Extract document ID (day) and value
+        _chartData = snapshot.docs.map((doc) {
+          return {
+            'day': doc.id, // Document ID as day to use it's 1st letter only
+            'value': doc['value'], // Corresponding value field
+          };
+        }).toList()
+          ..sort((a, b) => daysOrder
+              .indexOf(a['day'])
+              .compareTo(daysOrder.indexOf(b['day'])));
+
+        _isLoading = false;
+      });
+    } catch (e) {
+      print('Error fetching chart data: $e');
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (_isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
     return Column(
       children: [
-        
         const Text(
           '2h 20m',
           style: TextStyle(
@@ -16,7 +72,7 @@ class ChartBars extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Color(0xFFFFD04E),
           ),
-          textAlign: TextAlign.center, 
+          textAlign: TextAlign.center,
         ),
         const SizedBox(height: 0),
         const Text(
@@ -26,9 +82,9 @@ class ChartBars extends StatelessWidget {
             // fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
-          textAlign: TextAlign.center, 
+          textAlign: TextAlign.center,
         ),
-        const SizedBox(height: 16), 
+        const SizedBox(height: 16),
         AspectRatio(
           aspectRatio: 1.7, //
           child: BarChart(
@@ -62,7 +118,7 @@ class ChartBars extends StatelessWidget {
             return BarTooltipItem(
               rod.toY.round().toString(),
               const TextStyle(
-                color: Color(0xFFFFD04E),  //numbers
+                color: Color(0xFFFFD04E), //numbers
                 fontWeight: FontWeight.bold,
               ),
             );
@@ -72,37 +128,22 @@ class ChartBars extends StatelessWidget {
 
   Widget getTitles(double value, TitleMeta meta) {
     const style = TextStyle(
-      color: Color(0xFFFFD04E),  //days
+      color: Color(0xFFFFD04E), //days
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );
-    String text;
-    switch (value.toInt()) {
-      case 0:
-        text = 'M';
-        break;
-      case 1:
-        text = 'T';
-        break;
-      case 2:
-        text = 'W';
-        break;
-      case 3:
-        text = 'T';
-        break;
-      case 4:
-        text = 'F';
-        break;
-      case 5:
-        text = 'S';
-        break;
-      case 6:
-        text = 'S';
-        break;
-      default:
-        text = '';
-        break;
+
+    // --Ensure the value is within range
+    if (value.toInt() < 0 || value.toInt() >= _chartData.length) {
+      return const SizedBox.shrink();
     }
+
+    // Extract the corresponding day (document ID) from _chartData
+    String day = _chartData[value.toInt()]['day'];
+
+    // Use the first letter of the document ID for the title
+    String text = day.isNotEmpty ? day[0].toUpperCase() : '';
+    // ----
     return SideTitleWidget(
       axisSide: meta.axisSide,
       space: 4,
@@ -143,107 +184,24 @@ class ChartBars extends StatelessWidget {
         end: Alignment.topCenter,
       );
 
-  List<BarChartGroupData> get barGroups => [
-        BarChartGroupData(
-          x: 0,
-          barRods: [
-            BarChartRodData(
-              toY: 8,
-              gradient: _barsGradient,
-              width: 20,
-              borderRadius: BorderRadius.circular(5),
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 1,
-          barRods: [
-            BarChartRodData(
-              toY: 10,
-              gradient: _barsGradient,
-              width: 20,
-              borderRadius: BorderRadius.circular(5),
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 2,
-          barRods: [
-            BarChartRodData(
-              toY: 14,
-              gradient: _barsGradient,
-              width: 20,
-              borderRadius: BorderRadius.circular(5),
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 3,
-          barRods: [
-            BarChartRodData(
-              toY: 15,
-              gradient: _barsGradient,
-              width: 20,
-              borderRadius: BorderRadius.circular(5),
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 4,
-          barRods: [
-            BarChartRodData(
-              toY: 13,
-              gradient: _barsGradient,
-              width: 20,
-              borderRadius: BorderRadius.circular(5),
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 5,
-          barRods: [
-            BarChartRodData(
-              toY: 10,
-              gradient: _barsGradient,
-              width: 20,
-              borderRadius: BorderRadius.circular(5),
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 6,
-          barRods: [
-            BarChartRodData(
-              toY: 16,
-              gradient: _barsGradient,
-              width: 20,
-              borderRadius: BorderRadius.circular(5),
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-      ];
+  // --Generate BarChartGroupData from fetched data
+  List<BarChartGroupData> get barGroups {
+    return _chartData.asMap().entries.map((entry) {
+      int index = entry.key; // Index from the _chartData list
+      Map<String, dynamic> data = entry.value;
+
+      return BarChartGroupData(
+        x: index,
+        barRods: [
+          BarChartRodData(
+            toY: data['value'].toDouble(),
+            gradient: _barsGradient,
+            width: 20,
+            borderRadius: BorderRadius.circular(5),
+          ),
+        ],
+        showingTooltipIndicators: [0],
+      );
+    }).toList();
+  }
 }
-
-// class BarChartSample3 extends StatefulWidget {
-//   const BarChartSample3({super.key});
-
-//   @override
-//   State<StatefulWidget> createState() => BarChartSample3State();
-// }
-
-// class BarChartSample3State extends State<BarChartSample3> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return const AspectRatio(
-//       aspectRatio: 1.6,
-//       child: ChartBars(),
-//     );
-//   }
-// }
