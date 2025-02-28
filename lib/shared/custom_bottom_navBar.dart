@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../enum/menu_state.dart';
+import '../enum/menu_state.dart';
 
 class CustomizedBottomNavBar extends StatelessWidget {
   final MenuState selectedMenu;
@@ -49,7 +49,7 @@ class CustomizedBottomNavBar extends StatelessWidget {
             ),
           ),
           IconButton(
-              onPressed: () => {},
+              onPressed: () => {Navigator.pushNamed(context, '/map')},
               icon: Icon(
                 Icons.assistant_direction_rounded,
                 color: MenuState.maps == selectedMenu

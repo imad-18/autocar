@@ -3,6 +3,7 @@ import 'package:autocar/screens/statistics/statistic_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'screens/home/home_screen.dart';
+import 'screens/maps/map.dart';
 import 'screens/start/index.dart';
 
 Future<void> main() async {
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomeScreen(),
         '/notification': (context) => const NotificationScreen(),
         '/statistic': (context) => const StatisticScreen(),
+        '/map': (context) => const MyMap(),
       },
     );
   }

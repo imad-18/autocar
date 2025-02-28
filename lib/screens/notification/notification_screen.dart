@@ -1,7 +1,7 @@
 import 'package:autocar/screens/notification/widgets/notification.dart';
 import 'package:flutter/material.dart';
 import '../../enum/menu_state.dart';
-import '../home/widgets/custom_bottom_navBar.dart';
+import '../../shared/custom_bottom_navBar.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -39,72 +39,70 @@ class NotificationScreen extends StatelessWidget {
               ),
             ),
           ),
-          SafeArea(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 60,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: const Color(0xFFFFD04E),
-                          ),
-                          child: const Icon(
-                            Icons.notifications_none_rounded,
-                            size: 36,
-                          ),
+          SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              child: Column(
+                children: [
+                  SizedBox(height: 50),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 60,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: const Color(0xFFFFD04E),
                         ),
-                        const SizedBox(width: 12),
-                        const Text(
-                          'Notifications',
-                          style: TextStyle(
-                              color: Color(0xFFFFD04E),
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold),
+                        child: const Icon(
+                          Icons.notifications_none_rounded,
+                          size: 36,
                         ),
-                        const SizedBox(height: 30),
-                      ],
-                    ),
-                    const SizedBox(height: 50),
-                    const NotificationWidget(
-                        title: "Distance reached",
-                        description: "Move the vehicle for more safety"),
-                    const SizedBox(height: 25),
-                    const NotificationWidget(
-                        title: "Battery is charged",
-                        description: "First battery is fully charged"),
-                    const SizedBox(height: 25),
-                    const NotificationWidget(
-                        title: "Max consumption",
-                        description: "You have reached ur max consuption"),
-                    const SizedBox(height: 25),
-                    const NotificationWidget(
-                        title: "Distance reached",
-                        description: "Move the vehicle for more safety"),
-                    const SizedBox(height: 25),
-                    const NotificationWidget(
-                        title: "Battery is charged",
-                        description: "First battery is fully charged"),
-                    const SizedBox(height: 25),
-                    const NotificationWidget(
-                        title: "Max consumption",
-                        description: "You have reached ur max consuption"),
-                    // ...List.generate(
-                    //   Cathegories.length,
-                    //   (index) => NotificationWidget(
-                    //       title: Cathegories[index]['title']!,
-                    //       description: Cathegories[index]['description']!),
-                    // )
-                  ],
-                ),
+                      ),
+                      const SizedBox(width: 12),
+                      const Text(
+                        'Notifications',
+                        style: TextStyle(
+                            color: Color(0xFFFFD04E),
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 30),
+                    ],
+                  ),
+                  const SizedBox(height: 50),
+                  const NotificationWidget(
+                      title: "Distance reached",
+                      description: "Move the vehicle for more safety"),
+                  const SizedBox(height: 25),
+                  const NotificationWidget(
+                      title: "Battery is charged",
+                      description: "First battery is fully charged"),
+                  const SizedBox(height: 25),
+                  const NotificationWidget(
+                      title: "Max consumption",
+                      description: "You have reached ur max consuption"),
+                  const SizedBox(height: 25),
+                  const NotificationWidget(
+                      title: "Distance reached",
+                      description: "Move the vehicle for more safety"),
+                  const SizedBox(height: 25),
+                  const NotificationWidget(
+                      title: "Battery is charged",
+                      description: "First battery is fully charged"),
+                  const SizedBox(height: 25),
+                  const NotificationWidget(
+                      title: "Max consumption",
+                      description: "You have reached ur max consuption"),
+                  // ...List.generate(
+                  //   Cathegories.length,
+                  //   (index) => NotificationWidget(
+                  //       title: Cathegories[index]['title']!,
+                  //       description: Cathegories[index]['description']!),
+                  // )
+                ],
               ),
             ),
           ),
